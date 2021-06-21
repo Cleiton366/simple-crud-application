@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Simple-crud-application</title>
+</head>
+
+<body>
+    <main>
+
+        <div id="showClients">
+            <ul>
+                <h3>Clientes</h3>
+                <img class="refreshBtn" src="/icons/iconfinder_refresh-ccw_2561289.svg" alt="refresh">
+                <% for(var i=0; i < clientsArr.length; i++) {%>
+                    <li class="client" id="<%=i%>">
+                        <img class="deleteBtn" id="<%=clientsArr[i].cnpj%>" src="/icons/iconfinder_delete_216170.svg"
+                            alt="delete">
+
+                        <p>Cnpj:</p>
+                        <span id="cnpj<%= i %>"><%=clientsArr[i].cnpj%></span>
+                        <br>
+                        <p>Razão Social:</p>
+                        <span id="razaoSocial<%= i %>"><%=clientsArr[i].razaoSocial%></span>
+                        <br>
+                        <p>Nome de Contato:</p>
+                        <span id="nomeContato<%= i %>"><%=clientsArr[i].nomeContato%></span>
+                        <br>
+                        <p>Telefone:</p>
+                        <span id="tel<%= i %>"><%=clientsArr[i].tel%></span>
+                        <br>
+                        <p>Logradouro:</p>
+                        <span id="logradouro<%= i %>"><%=clientsArr[i].logradouro%></span>
+                        <br>
+                        <p>Número:</p>
+                        <span id="numero<%= i %>"><%=clientsArr[i].numero%></span>
+                        <br>
+                        <p>Complemento:</p>
+                        <span id="complemento<%= i %>"><%=clientsArr[i].complemento%></span>
+                        <br>
+                        <p>Bairro:</p>
+                        <span id="bairro<%= i %>"><%=clientsArr[i].bairro%></span>
+                        <br>
+                        <p>Cidade:</p>
+                        <span id="cidade<%= i %>"><%=clientsArr[i].cidade%></span>
+                        <br>
+                        <p>Estado:</p>
+                        <span id="estado<%= i %>"><%=clientsArr[i].estado%></span>
+                        <br>
+                        <p>CEP:</p>
+                        <span id="cep<%= i %>"><%=clientsArr[i].cep%></span>
+                        <br>
+                        <p>Latitude:</p>
+                        <span id="lat<%= i %>"><%=clientsArr[i].lat%></span>
+                        <br>
+                        <p>Longitude:</p>
+                        <span id="lng<%= i %>"><%=clientsArr[i].lng%></span>
+                        <br>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
+
+        <div id="mapsContainer">
+            <h3>Localizaçao do Cliente</h3>
+            <div id="map"></div>
+        </div>
+
+        <div id="formAddClient">
+            <form>
+                <h3>Dados do Cliente</h1>
+                    <input id="cnpjInput" type="text" placeholder="CNPJ*" name="cnpj" required>
+                    <input id="razaoInput" type="text" placeholder="Razão Social*" name="razaoSocial" required>
+                    <input id="contatoInput" type="text" placeholder="Nome de Contato*" name="nomeContato" required>
+                    <input id="telInput" type="text" placeholder="Telefone*" name="tel" required>
+                    <h3>Endereço</h3>
+                    <input id="logradouroInput" type="text" placeholder="Logradouro*" name="logradouro" required>
+                    <input id="numeroInput" type="text" placeholder="Número*" name="numero" required>
+                    <input id="complementoInput" type="text" placeholder="Complemento" name="complemento">
+                    <input id="bairroInput" type="text" placeholder="Bairro*" name="bairro" required>
+                    <input id="cidadeInput" type="text" placeholder="Cidade*" name="cidade" required>
+                    <input id="estadoInput" type="text" placeholder="Estado*" name="estado" required>
+                    <input id="cepInput" type="text" placeholder="CEP*" name="cep" required>
+
+                    <button class="btn" id="submitBtn" type="submit">Enviar</button>
+                    <button class="btn" id="updateBtn" type="submit">Editar</button>
+            </form>
+
+        </div>
+
+    </main>
+</body>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=#INSERT-YOUR-API-HERE#&callback=initMap&libraries=&v=weekly"async></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../js/main.js"></script>
+
+</html>

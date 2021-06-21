@@ -1,0 +1,1 @@
+Simple crud application using Nodejs and MongoDB. Using Google's Geolocation API to determinate the client's geolocation according with the given address and Google Maps's API to show the client's location on the interface.
