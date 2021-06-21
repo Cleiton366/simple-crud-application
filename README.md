@@ -14,3 +14,5 @@ Go to ../public/views/index.ejs. Once you opened the file, replace #INSERT-YOUR-
 
 Now go to ../public/js/main.js. Once you opened the file, replace #INSERT-YOUR-API-HERE# with your API key. 
 ![image](https://user-images.githubusercontent.com/57187549/122799477-2acef400-d298-11eb-9beb-6a13a1771b74.png)
+
+Once both APIs are placed, just hit a "yarn dev" in the console and you're good to go.
