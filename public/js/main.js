@@ -1,6 +1,4 @@
-let cliente;
 let map;
-var api = '#INSERT-YOUR-API-HERE#';
 
 $(document).ready(function () {
     initMap();
@@ -41,39 +39,29 @@ function addClient() {
     var cidade = $("#cidadeInput").val();
     var estado = $("#estadoInput").val();
     var cep = $("#cepInput").val();
-    var lat;
-    var lng;
-
-    var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + logradouro + "+" + cidade + "+" + estado + "+" + cep +"&key="+ api;
-    $.getJSON(url, function (data) {
-        lat = data.results[0].geometry.location.lat;
-        lng = data.results[0].geometry.location.lng;
-
-        cliente = {
-            cnpj, razaoSocial, nomeContato, tel,
-            logradouro, numero, complemento, bairro,
-            cidade, estado, cep
-        };
-        console.log("cliente client-side", cliente)
-        fetch("/addClient", {
-            method: "post",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                cnpj: cliente.cnpj,
-                razaoSocial: cliente.razaoSocial,
-                nomeContato: cliente.nomeContato,
-                tel: cliente.tel,
-                logradouro: cliente.logradouro,
-                numero: cliente.numero,
-                complemento: cliente.complemento,
-                bairro: cliente.bairro,
-                cidade: cliente.cidade,
-                estado: cliente.estado,
-                cep: cliente.cep,
-                lat: lat,
-                lng: lng
-            })
-        });
+    
+    let cliente = {
+        cnpj, razaoSocial, nomeContato, tel,
+        logradouro, numero, complemento, bairro,
+        cidade, estado, cep
+    };
+    
+    fetch("/addClient", {
+        method: "post",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            cnpj: cliente.cnpj,
+            razaoSocial: cliente.razaoSocial,
+            nomeContato: cliente.nomeContato,
+            tel: cliente.tel,
+            logradouro: cliente.logradouro,
+            numero: cliente.numero,
+            complemento: cliente.complemento,
+            bairro: cliente.bairro,
+            cidade: cliente.cidade,
+            estado: cliente.estado,
+            cep: cliente.cep
+        })
     });
 
     alert("Cliente cadastrado!");
@@ -171,7 +159,6 @@ function update() {
 
     alert("Informações editadas!");
 }
-
 
 function initMap(lat, lng) {
 

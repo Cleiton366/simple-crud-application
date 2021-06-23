@@ -1,4 +1,7 @@
 import { db, clienteCollection } from "../connection/connection";
+import { ClienteServices } from "../services/ClienteServices";
+
+const clienteServices = new ClienteServices();
 
 interface ICliente {
     cnpj: string,
@@ -11,13 +14,13 @@ interface ICliente {
     bairro: string,
     cidade: string,
     estado: string,
-    cep : string,
-    lat : string, 
-    lng : string
+    cep: string,
+    lat: string,
+    lng: string
 }
 
 class ClienteRepository {
-    
+
     async create({ cnpj, razaoSocial, nomeContato, tel,
         logradouro, numero, complemento, bairro,
         cidade, estado, cep, lat, lng }: ICliente) {
@@ -28,6 +31,14 @@ class ClienteRepository {
             cidade, estado, cep, lat, lng
         };
 
+        //Getting client geocoding
+        var address = logradouro + "+" + cidade + "+" + bairro + "+" + estado + "+" + cep;
+        await clienteServices.getGeocoding(address).then((data) => {
+            console.log("Client geocoding: ", data.status);  
+            cliente.lat = data.results[0].geometry.location.lat;
+            cliente.lng = data.results[0].geometry.location.lng;
+        });  
+        
         try {
             clienteCollection.insertOne(cliente)
                 .then(result => {
@@ -52,7 +63,7 @@ class ClienteRepository {
         return arr
     }
 
-    async update({ cnpj, razaoSocial, nomeContato, tel,
+    update({ cnpj, razaoSocial, nomeContato, tel,
         logradouro, numero, complemento, bairro,
         cidade, estado, cep, lat, lng }: ICliente) {
 
@@ -79,17 +90,17 @@ class ClienteRepository {
                     cep: cliente.cep
                 }
             }
-        ).then( result =>{
+        ).then(result => {
             console.log("Client info edited successfully:", result);
         }).catch(err => console.error("Erro while trying to edit client info:", err));
 
     }
 
-    async deleteClient(cnpj) {
+    deleteClient(cnpj) {
         const cnpjClient = cnpj;
         clienteCollection.deleteOne(
-            {cnpj: cnpjClient.cnpj}
-        ).then( result =>{
+            { cnpj: cnpjClient.cnpj }
+        ).then(result => {
             console.log("Client deleted from the database:", result);
         }).catch(err => console.error("Error while trying to delete client:", err));
     }
