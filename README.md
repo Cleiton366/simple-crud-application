@@ -13,6 +13,7 @@ Go to ../public/views/index.ejs. Once you opened the file, replace #INSERT-YOUR-
 ![image](https://user-images.githubusercontent.com/57187549/122799570-40dcb480-d298-11eb-89c1-7611ab1217ca.png)
 
 Now go to ..src/services/ClienteServices.ts. Once you opened the file, replace #INSERT-YOUR-API-HERE# with your API key. 
+
 ![image](https://user-images.githubusercontent.com/57187549/123152403-edef3280-d43a-11eb-8301-0af0b8c2aa0c.png)
 
 
