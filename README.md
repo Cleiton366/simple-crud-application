@@ -12,7 +12,8 @@ Once you have both API keys enabled, you have to put in the ejs and js files to 
 Go to ../public/views/index.ejs. Once you opened the file, replace #INSERT-YOUR-API-HERE# with your API key. 
 ![image](https://user-images.githubusercontent.com/57187549/122799570-40dcb480-d298-11eb-89c1-7611ab1217ca.png)
 
-Now go to ../public/js/main.js. Once you opened the file, replace #INSERT-YOUR-API-HERE# with your API key. 
-![image](https://user-images.githubusercontent.com/57187549/122799477-2acef400-d298-11eb-9beb-6a13a1771b74.png)
+Now go to ..src/services/ClienteServices.ts. Once you opened the file, replace #INSERT-YOUR-API-HERE# with your API key. 
+![image](https://user-images.githubusercontent.com/57187549/123152403-edef3280-d43a-11eb-8301-0af0b8c2aa0c.png)
+
 
 Once both APIs are placed, just hit a "yarn dev" in the console and you're good to go.
