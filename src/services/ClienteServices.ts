@@ -1,4 +1,4 @@
-const api = 'AIzaSyB-xCOnGahnCYuqnAuU8vkto9UmOB-Gu0Y';
+const api = '#INSERT-YOUR-API-HERE#';
 const fetch = require("node-fetch");
 
 class ClienteServices {
