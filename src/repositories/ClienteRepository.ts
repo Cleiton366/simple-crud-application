@@ -49,20 +49,15 @@ class ClienteRepository {
         }
 
     }
-
-    async getClients() {
-        let arr = [];
+    
+    async getClients() {     
         try {
-            await db.collection("clientes").find().toArray()
-                .then((results) => {
-                    arr = results;
-                });
+           return await db.collection("clientes").find().toArray();
         } catch (err) {
             console.error("Error while trying to acess clients from the data base: ", err);
         }
-        return arr
     }
-
+    
     update({ cnpj, razaoSocial, nomeContato, tel,
         logradouro, numero, complemento, bairro,
         cidade, estado, cep, lat, lng }: ICliente) {

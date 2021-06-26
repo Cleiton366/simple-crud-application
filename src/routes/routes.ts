@@ -15,17 +15,10 @@ app.listen(3000, function () {
     console.log("Server up and running at port 3000.");
 });
 
-app.get("/", (req, res) => {
-
-    clienteController.getClients()
-        .then((results) => {
-            clientsArr = results;
-        });
-    setTimeout(function () {
-        console.log("Loading files.");
+ app.get("/", async (req, res) => {   
+    await clienteController.getClients().then((clientsArr) => {
         res.render("../public/views/index.ejs", { clientsArr });
-    }, 1000);
-
+    });
 });
 
 app.post("/addClient", (req, res) => {
